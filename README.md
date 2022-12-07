@@ -1,1 +1,0 @@
-This is 0x02. Shell, I/O Redirections and filters of ALX
