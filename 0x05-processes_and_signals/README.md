@@ -139,8 +139,9 @@ What you should learn from this project:
 
 ---
 
-## Author
-* **Prince Solomon** - [princexz](https://github.com/princexz)
+## Author :black_nib:
+
+* **ShadowP2066** [ShadowP2066](https://github.com/ShadowP2066)
 
 ## Acknowledgements :pray:
 
