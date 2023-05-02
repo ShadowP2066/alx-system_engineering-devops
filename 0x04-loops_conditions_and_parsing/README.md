@@ -147,7 +147,8 @@ In this project, I worked on loops and conditionals statements in Bash.
 ---
 
 
-## Author
+## Author :black_nib:
+
 * **ShadowP2066** [ShadowP2066](https://github.com/ShadowP2066)
 
 ## Acknowledgements :pray:
