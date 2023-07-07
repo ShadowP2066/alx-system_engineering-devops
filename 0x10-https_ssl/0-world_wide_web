@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-# takes in a domain and subdomain as argument and print out the subdomain infos
-
-output () {
-    dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" |  awk -F" " ' NR==2 { print "The subdomain " $1 " is a " $4 " record and points to "$5 }'
+# Configure doman zone so that the subdomain www points to load-balancer IP
+domain_output () {
+	line_output=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
+	echo "$2 $line_output" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
 }
 
-if [ "$#" -eq 2 ]
+if [ "$#" == 1 ]
 then
-    output "$2.$1" "$2"
-else
-    output "www.$1" 'www'
-    output "lb-01.$1" 'lb-01'
-    output "web-01.$1" 'web-01'
-    output "web-02.$1" 'web-02'
+	domain_output "$1" "www"
+	domain_output "$1" "lb-01"
+	domain_output "$1" "web-01"
+	domain_output "$1" "web-02"
+elif [ "$#" == 2 ]
+then
+	domain_output "$1" "$2"
 fi
