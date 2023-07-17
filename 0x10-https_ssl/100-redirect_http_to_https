@@ -47,8 +47,8 @@ frontend front-https
 backend back
 	http-request redirect scheme https code 301 unless { ssl_fc }
         balance roundrobin
-        server 2177-web-01 35.243.155.96:80 check
-        server 2177-web-02 54.227.102.243:80 check
+        server 187148-web-01 18.233.64.222:80 check
+        server 187148-web-02 54.237.102.196:80 check
 
 backend letsencrypt-backend
 	server letsencrypt 127.0.0.1:54321
