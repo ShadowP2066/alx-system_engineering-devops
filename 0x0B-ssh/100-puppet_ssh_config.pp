@@ -1,19 +1,12 @@
-# puppet script - configure ssh authentication:
-
+# Puppet script to create ssh config file
 file_line { 'Turn off passwd auth':
-  path => '/etc/ssh/sshd_config',  # Use the SSH server config file
-  line => 'PasswordAuthentication no',
-  notify => Service['ssh'],  # Ensure the SSH service restarts if this resource changes
+  ensure => 'present',
+  path   => '/etc/ssh/ssh_config',
+  line   => '    PasswordAuthentication no',
 }
 
 file_line { 'Declare identity file':
-  path => '/etc/ssh/sshd_config',  # Use the SSH server config file
-  line => 'IdentityFile ~/.ssh/school',
-  notify => Service['ssh'],  # Ensure the SSH service restarts if this resource changes
+  ensure => 'present',
+  path   => '/etc/ssh/ssh_config',
+  line   => '    IdentityFile ~/.ssh/school',
 }
-
-service { 'ssh':
-  ensure => running,
-  enable => true,
-}
-
